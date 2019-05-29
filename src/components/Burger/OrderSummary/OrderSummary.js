@@ -7,7 +7,7 @@ class OrderSummary extends React.Component {
   // This component can be a functional, no need for class based
   // I'm using componentWillUpdate for debugging purposes
   componentWillUpdate() {
-    console.log('[OrderSummary.js] componentWillUpdate')
+    // console.log('[OrderSummary.js] componentWillUpdate')
   }
 
   render() {
