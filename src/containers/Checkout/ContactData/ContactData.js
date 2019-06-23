@@ -92,8 +92,7 @@ class ContactData extends React.Component {
         valid: true
       },
     },
-    formIsValid: false,
-    loading: false
+    formIsValid: false
   }
 
   orderHandler = (event) => {
@@ -173,7 +172,7 @@ class ContactData extends React.Component {
       </form>
     );
 
-    if (this.state.loading) {
+    if (this.props.loading) {
       form = <Spinner/>
     }
 
@@ -188,14 +187,15 @@ class ContactData extends React.Component {
 
 const mapStateToProps = state => (
   {
-    ings: state.ingredients,
-    price: state.totalPrice
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice,
+    loading: state.order.loading
   }
 )
 
 const mapDispatchToProps = dispatch => (
   {
-  onOrderBurger: (order) => dispatch(actions.purchaseBurgerStart(order))
+  onOrderBurger: (order) => dispatch(actions.purchaseBurger(order))
   }
 )
 
