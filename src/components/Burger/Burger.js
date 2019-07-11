@@ -24,7 +24,6 @@ const burger = (props) => {
     }, []);
   // In the end the state object passed as a prop gets mapped to an array of BurgerIngredient arrays
   // It looks something like: [ [one bacon], [one lettuce, two lettuce], [one meat, two meat, three meat] ]
-  // console.log(outputIngredients);
 
   if (outputIngredients.length === 0) {
     outputIngredients = <p>Please start adding ingredients!</p>

@@ -4,11 +4,6 @@ import Aux from '../../../hoc/Aux/Aux';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends React.Component {
-  // This component can be a functional, no need for class based
-  // I'm using componentWillUpdate for debugging purposes
-  componentWillUpdate() {
-    // console.log('[OrderSummary.js] componentWillUpdate')
-  }
 
   render() {
     const ingredientSummary = Object.keys(this.props.ingredients)
