@@ -7,10 +7,6 @@ import ContactData from './ContactData/ContactData';
 
 class Checkout extends React.Component {
 
-  componentWillMount = () => {
-    // this.props.onPurchaseInit();
-  }
-
   checkoutCancelledHandler = () => {
     this.props.history.goBack();
   }

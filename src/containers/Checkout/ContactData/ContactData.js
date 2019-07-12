@@ -8,6 +8,7 @@ import Input from '../../../components/UI/Input/Input';
 import styles from './ContactData.module.css'
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions/index';
+import {updatedObject, checkValidity} from '../../../shared/utility';
 
 class ContactData extends React.Component {
   state = {
@@ -113,27 +114,15 @@ class ContactData extends React.Component {
 
   }
 
-  checkValidity(value, rules) {
-    let isValid = true;
-    if (rules.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
-    }
-    return isValid
-  }
-
   inputChangedHandler = (event, key) => {
-    const updatedOrderForm = { ...this.state.orderForm }
-    const updatedFormElement = { ...updatedOrderForm[key]}
-    updatedFormElement.value = event.target.value
-    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-    updatedFormElement.touched = true;
-    updatedOrderForm[key] = updatedFormElement
+    const updatedFormElement = updatedObject(this.state.orderForm[key], {
+      value: event.target.value,
+      valid: checkValidity(event.target.value, this.state.orderForm[key].validation),
+      touched: true
+    })
+    const updatedOrderForm = updatedObject(this.state.orderForm, {
+      [key]: updatedFormElement
+    })
 
     let formIsValid = true;
     for (let key in updatedOrderForm) {
