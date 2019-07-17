@@ -13,22 +13,27 @@ describe('auth reducer', () => {
   })
 
   it('should store the token upon login', () => {
-    expect(reducer({
-      token: null,
-      userId: null,
-      error: null,
-      loading: false,
-      authRedirectPath: '/'
-    }, {
-      action: actions.AUTH_SUCESS,
-      idToken: 'token',
-      userId: 'user-id'
-    })).toEqual({
-      token: 'token',
-      userId: 'user-id',
-      error: null,
-      loading: false,
-      authRedirectPath: '/'
-    })
+    expect(reducer(
+      {
+        token: null,
+        userId: null,
+        error: null,
+        loading: false,
+        authRedirectPath: '/'
+      },
+      {
+        type: actions.AUTH_SUCCESS,
+        token: 'token',
+        userId: 'user-id'
+      }))
+    .toEqual(
+      {
+        token: 'token',
+        userId: 'user-id',
+        error: null,
+        loading: false,
+        authRedirectPath: '/'
+      }
+    )
   })
 })
